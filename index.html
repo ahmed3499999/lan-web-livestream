@@ -7,7 +7,7 @@
     const img = document.querySelector('img');
     
     const f = () => {
-        img.src = 'http://10.90.0.241:3000/img.png?random=' + performance.now();
+        img.src = 'img.png?random=' + performance.now();
         setTimeout(f, 1000/fps);
     };
     f();
