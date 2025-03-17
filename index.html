@@ -1,0 +1,34 @@
+<img src = 'img.png'>
+
+<script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const fps = parseInt(urlParams.get('fps'));
+    const img = document.querySelector('img');
+    
+    const f = () => {
+        img.src = 'http://10.90.0.241:3000/img.png?random=' + performance.now();
+        setTimeout(f, 1000/fps);
+    };
+    f();
+</script>
+
+<style>
+   
+body, html {
+    height: 100%;
+}
+
+img {
+  /* The image used */
+  background-image: url("img_girl.jpg");
+
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>

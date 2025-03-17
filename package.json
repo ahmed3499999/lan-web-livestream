@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "node-screenshots": "^0.2.1",
+    "opencv-wasm": "^4.3.0-10",
+    "sharp": "^0.33.5",
+    "ws": "^8.18.1"
+  }
+}
