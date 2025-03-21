@@ -1,16 +1,24 @@
-<img src = 'img.png'>
-
+<img>
 <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const fps = parseInt(urlParams.get('fps'));
+    const url = 'ws://ip_place:7070';
     const img = document.querySelector('img');
+    let webSocket = new WebSocket(url);
     
-    const f = () => {
-        img.src = 'img.png?random=' + performance.now();
-        setTimeout(f, 1000/fps);
-    };
-    f();
+    webSocket.addEventListener('close', (event) => {
+      console.log("ws closed");
+      
+      while (webSocket.readyState != WebSocket.OPEN){
+        webSocket = new WebSocket(url);
+        console.log("reconnecting");
+        setTimeout(500);
+      }
+    });
+
+    webSocket.onmessage = (event) => {
+      img.src = 'data:image/png;base64,' + event.data;
+    }
+    
+
 </script>
 
 <style>
@@ -20,13 +28,7 @@ body, html {
 }
 
 img {
-  /* The image used */
-  background-image: url("img_girl.jpg");
-
-  /* Full height */
   height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

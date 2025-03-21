@@ -10,6 +10,7 @@
     "packageJson": {
       "dependencies": [
         "npm:express@^4.21.2",
+        "npm:ip@^2.0.1",
         "npm:node-screenshots@~0.2.1",
         "npm:opencv-wasm@^4.3.0-10",
         "npm:sharp@~0.33.5",
